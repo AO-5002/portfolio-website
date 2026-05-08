@@ -2,7 +2,25 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #181818;
+
+  /* Typography Scale */
+  --text-caption: 0.625rem; /* 10px */
+  --text-small: 0.8125rem; /* 13px */
+  --text-base: 1.0625rem; /* 17px */
+  --text-label: 1.375rem; /* 22px */
+  --text-h3: 3.125rem; /* 50px */
+  --text-h2: 2.375rem; /* 38px */
+  --text-h1: 1.8125rem; /* 29px */
+
+  /* Line Heights (Apple-inspired) */
+  --leading-caption: 1.3; /* 13px */
+  --leading-small: 1.384; /* 18px */
+  --leading-base: 1.47; /* 25px */
+  --leading-label: 1.363; /* 30px */
+  --leading-h3: 1.2; /* 60px */
+  --leading-h2: 1.21; /* 46px */
+  --leading-h1: 1.241; /* 36px */
 }
 
 @theme inline {
@@ -14,8 +32,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #181818;
+    --foreground: #ffffff;
   }
 }
 
@@ -23,4 +41,55 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  font-size: var(--text-base);
+  line-height: var(--leading-base);
+}
+
+h1 {
+  font-size: var(--text-h1);
+  line-height: var(--leading-h1);
+  font-weight: 700;
+  letter-spacing: -0.022em;
+}
+
+h2 {
+  font-size: var(--text-h2);
+  line-height: var(--leading-h2);
+  font-weight: 700;
+  letter-spacing: -0.021em;
+}
+
+h3 {
+  font-size: var(--text-h3);
+  line-height: var(--leading-h3);
+  font-weight: 600;
+  letter-spacing: -0.019em;
+}
+
+.label {
+  font-size: var(--text-label);
+  line-height: var(--leading-label);
+  font-weight: 600;
+  letter-spacing: -0.018em;
+}
+
+.text-base {
+  font-size: var(--text-base);
+  line-height: var(--leading-base);
+  font-weight: 400;
+  letter-spacing: -0.022em;
+}
+
+.text-small {
+  font-size: var(--text-small);
+  line-height: var(--leading-small);
+  font-weight: 400;
+  letter-spacing: -0.008em;
+}
+
+.caption {
+  font-size: var(--text-caption);
+  line-height: var(--leading-caption);
+  font-weight: 400;
+  letter-spacing: 0em;
 }
