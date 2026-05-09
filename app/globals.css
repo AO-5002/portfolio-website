@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #fdfdfd;
   --foreground: #181818;
 
   /* Typography Scale */
@@ -40,56 +40,55 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), sans-serif;
   font-size: var(--text-base);
   line-height: var(--leading-base);
+  font-weight: 300; /* Inter Light globally */
 }
+@layer base {
+  h1,
+  h2,
+  h3,
+  .label,
+  .text-base,
+  .text-small,
+  .caption {
+    font-weight: 300;
+  }
 
-h1 {
-  font-size: var(--text-h1);
-  line-height: var(--leading-h1);
-  font-weight: 700;
-  letter-spacing: -0.022em;
-}
-
-h2 {
-  font-size: var(--text-h2);
-  line-height: var(--leading-h2);
-  font-weight: 700;
-  letter-spacing: -0.021em;
-}
-
-h3 {
-  font-size: var(--text-h3);
-  line-height: var(--leading-h3);
-  font-weight: 600;
-  letter-spacing: -0.019em;
-}
-
-.label {
-  font-size: var(--text-label);
-  line-height: var(--leading-label);
-  font-weight: 600;
-  letter-spacing: -0.018em;
-}
-
-.text-base {
-  font-size: var(--text-base);
-  line-height: var(--leading-base);
-  font-weight: 400;
-  letter-spacing: -0.022em;
-}
-
-.text-small {
-  font-size: var(--text-small);
-  line-height: var(--leading-small);
-  font-weight: 400;
-  letter-spacing: -0.008em;
-}
-
-.caption {
-  font-size: var(--text-caption);
-  line-height: var(--leading-caption);
-  font-weight: 400;
-  letter-spacing: 0em;
+  h1 {
+    font-size: var(--text-h1);
+    line-height: var(--leading-h1);
+    letter-spacing: -0.022em;
+  }
+  h2 {
+    font-size: var(--text-h2);
+    line-height: var(--leading-h2);
+    letter-spacing: -0.021em;
+  }
+  h3 {
+    font-size: var(--text-h3);
+    line-height: var(--leading-h3);
+    letter-spacing: -0.019em;
+  }
+  .label {
+    font-size: var(--text-label);
+    line-height: var(--leading-label);
+    letter-spacing: -0.018em;
+  }
+  .text-base {
+    font-size: var(--text-base);
+    line-height: var(--leading-base);
+    letter-spacing: -0.022em;
+  }
+  .text-small {
+    font-size: var(--text-small);
+    line-height: var(--leading-small);
+    letter-spacing: -0.008em;
+  }
+  .caption {
+    font-size: var(--text-caption);
+    line-height: var(--leading-caption);
+    letter-spacing: 0em;
+  }
 }
