@@ -1,7 +1,7 @@
 interface Project_Details {
   outlines: string[];
-  corresponding_info: string[];
-  corresponding_images: string[];
+  corresponding_info?: string[];
+  corresponding_images?: string[];
 }
 
 interface Project {
