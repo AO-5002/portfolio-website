@@ -1,19 +1,24 @@
-interface Project_Details {
+type TCorrespondingInfo = {
+  content: string;
+  images?: string[];
+  timestamp?: string;
+};
+
+interface IProjectDetails {
   outlines: string[];
-  corresponding_info?: string[];
-  corresponding_images?: string[];
+  info: TCorrespondingInfo[];
 }
 
-interface Project {
+interface IProject {
   id: string;
   project_name: string;
   tools: string[];
   github_url?: string;
   thumbnail_url?: string;
-  details?: Project_Details;
+  details?: IProjectDetails;
 }
 
-const data: Project[] = [
+const data: IProject[] = [
   {
     id: "1",
     project_name: "Tunetrend",
@@ -33,9 +38,32 @@ const data: Project[] = [
   },
   {
     id: "2",
-    project_name: "Project 2",
-    tools: ["Tool A", "Tool B", "Tool C"],
+    project_name: "Racket Parser",
+    tools: ["Python", "Racket"],
+    thumbnail_url: "/kato.jpg",
+    details: {
+      outlines: [
+        "About",
+        "Breakdown",
+        "Lexical Analyzer",
+        "Parser",
+        "Parse Trees",
+        "Conclusion",
+      ],
+      info: [
+        {
+          content:
+            "For this project, I wanted to translate what I've done on paper onto code for my CS4337 class. ",
+          timestamp: "01-22-2005",
+        },
+      ],
+    },
   },
 ];
 
-export { data as project_data, type Project };
+export {
+  data as project_data,
+  type IProject,
+  type IProjectDetails,
+  type TCorrespondingInfo,
+};
