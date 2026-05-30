@@ -7,6 +7,7 @@ interface IBlog {
   author: {
     name: string;
     twitter_url?: string;
+    avatar_url?: string;
   };
   details: {
     outlines: string[];
