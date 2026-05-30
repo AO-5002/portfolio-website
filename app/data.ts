@@ -1,4 +1,4 @@
-const nav_data = ["Bio", "Projects", "Socials"];
+const nav_data = ["Bio", "Blog"];
 
 interface IBio {
   description: string;
