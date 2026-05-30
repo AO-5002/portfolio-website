@@ -1,17 +1,45 @@
 "use client";
 import { project_data, TCorrespondingInfo } from "../data";
-import { use } from "react";
+import { use, useEffect, useState } from "react";
 import Image from "next/image";
 
 function SidePanel({ id }: { id: string }) {
   const project = project_data.find((p) => p.id === id);
   const outlines = project?.details?.outlines;
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    if (!outlines) return;
+    const observers: IntersectionObserver[] = [];
+
+    outlines.forEach((_, i) => {
+      const el = document.getElementById(`section-${i}`);
+      if (!el) return;
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) setActiveIndex(i);
+        },
+        { rootMargin: "-40% 0px -40% 0px" },
+      );
+
+      observer.observe(el);
+      observers.push(observer);
+    });
+
+    return () => observers.forEach((o) => o.disconnect());
+  }, [outlines]);
 
   return (
     <div className="fixed right-4.25 top-14.25 w-25.25">
       <div className="flex flex-col items-end justify-center gap-2.25">
         {outlines?.map((outline, i) => (
-          <p className="caption truncate w-full text-right" key={i}>
+          <p
+            key={i}
+            className={`caption truncate w-full text-right transition-colors duration-200 ${
+              i === activeIndex ? "text-foreground" : "text-foreground/30"
+            }`}
+          >
             {outline}
           </p>
         ))}
@@ -21,21 +49,27 @@ function SidePanel({ id }: { id: string }) {
 }
 
 function ProjectOutlineContent({
+  headline,
   content,
   images,
   timestamp,
 }: TCorrespondingInfo) {
   return (
-    <div className="w-full flex flex-col gap-3.25">
-      <div className="w-full flex flex-col gap-3.25">
-        {images &&
-          images.map(() => {
-            return <></>;
-          })}
+    <div className="w-full flex flex-col items-center gap-7.25">
+      <div className="w-full flex flex-col items-start gap-3.25">
+        {images?.map((_, i) => (
+          <div key={i} />
+        ))}
         <p className="caption text-foreground/40">{timestamp}</p>
       </div>
-
-      <p className="base">{content}</p>
+      <div className="w-full flex flex-col gap-3">
+        <h1 className="font-bold">{headline}</h1>
+        {content.split("\n\n").map((paragraph, i) => (
+          <p key={i} className="base">
+            {paragraph}
+          </p>
+        ))}
+      </div>
     </div>
   );
 }
@@ -62,8 +96,18 @@ export default function ProjectPage({
             />
           </div>
         )}
+        {project?.contributers && (
+          <div className="w-full flex flex-row gap-3.25 items-center">
+            <p className="caption text-foreground/80">
+              {project.contributers.map((c) => c.name).join(" · ")}
+            </p>
+          </div>
+        )}
+
         {project?.details?.info.map((item, i) => (
-          <ProjectOutlineContent key={i} {...item} />
+          <div id={`section-${i}`} key={i} className="w-full">
+            <ProjectOutlineContent {...item} />
+          </div>
         ))}
       </div>
     </div>

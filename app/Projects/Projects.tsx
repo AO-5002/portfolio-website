@@ -9,7 +9,7 @@ import Link from "next/link";
 function EmptyBox() {
   return (
     <div className="w-full aspect-video bg-foreground/10 rounded-lg flex justify-center items-center">
-      {":("}
+      <p className="base">No Image</p>
     </div>
   );
 }

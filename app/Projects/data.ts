@@ -1,7 +1,16 @@
 type TCorrespondingInfo = {
+  headline?: string;
   content: string;
   images?: string[];
   timestamp?: string;
+};
+
+type TContributerDetails = {
+  name: string;
+  contribution_description?: string;
+  github_url?: string;
+  linkedin_url?: string;
+  email?: string;
 };
 
 interface IProjectDetails {
@@ -14,6 +23,7 @@ interface IProject {
   project_name: string;
   tools: string[];
   github_url?: string;
+  contributers?: TContributerDetails[];
   thumbnail_url?: string;
   details?: IProjectDetails;
 }
@@ -38,23 +48,42 @@ const data: IProject[] = [
   },
   {
     id: "2",
-    project_name: "Racket Parser",
-    tools: ["Python", "Racket"],
+    project_name: "Noir - Codebase Visualizer",
+    tools: ["Next.js", "FastAPI", "TS/JS", "Python"],
+    contributers: [
+      {
+        name: "Sreehari",
+        linkedin_url: "https://www.linkedin.com/in/sreehari-mr/",
+      },
+      {
+        name: "Marc",
+        linkedin_url: "https://www.linkedin.com/in/sreehari-mr/",
+      },
+    ],
     thumbnail_url: "/kato.jpg",
+
     details: {
-      outlines: [
-        "About",
-        "Breakdown",
-        "Lexical Analyzer",
-        "Parser",
-        "Parse Trees",
-        "Conclusion",
-      ],
+      outlines: ["About", "Comparison Analysis", "Prototype"],
       info: [
         {
+          headline: "About",
           content:
-            "For this project, I wanted to translate what I've done on paper onto code for my CS4337 class. ",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\nPellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est.\n\nCurabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis molestie dictum semper, est arcu blandit enim, at egestas mauris enim nec mi. Proin congue leo at mi fringilla, nec sodales risus facilisis.",
           timestamp: "01-22-2005",
+        },
+        {
+          headline: "Comparison Analysis",
+          content:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\nPellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est.\n\nCurabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis molestie dictum semper, est arcu blandit enim, at egestas mauris enim nec mi. Proin congue leo at mi fringilla, nec sodales risus facilisis.",
+        },
+        {
+          headline: "Prototype",
+          content:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\nPellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est.\n\nCurabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis molestie dictum semper, est arcu blandit enim, at egestas mauris enim nec mi. Proin congue leo at mi fringilla, nec sodales risus facilisis.",
+        },
+        {
+          content:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\nPellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est.\n\nCurabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis molestie dictum semper, est arcu blandit enim, at egestas mauris enim nec mi. Proin congue leo at mi fringilla, nec sodales risus facilisis.",
         },
       ],
     },

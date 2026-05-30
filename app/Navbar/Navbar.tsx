@@ -16,7 +16,7 @@ export default function Navbar() {
   )?.project_name;
 
   return (
-    <nav className="w-full sticky top-0 h-11.5 flex items-center justify-between">
+    <nav className="w-full sticky top-0 h-11.5 flex items-center justify-between backdrop-blur-lg bg-background/70 z-50">
       {isProjectPage && (
         <div className="w-full flex flex-row items-center gap-2 mx-49.5">
           <button
